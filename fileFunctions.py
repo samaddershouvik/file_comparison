@@ -137,8 +137,8 @@ def generate_excel_report(mother_file, comparison_file, output_dir):
                             "Observation Category": "Available in Filed Copy but missing in Customer Copy",  # Status
                             "Page": mother_title,  # Page Title
                             "Page Number": page_num,
-                            "Base File Content": line[2:].strip(),
-                            "Comparison File Content": "",
+                            f"Base File ({os.path.basename(mother_file)}) Content": line[2:].strip(),
+                            f"Comparison File ({os.path.basename(comparison_file)}) Content": "",
                         }
                     )
                 elif line.startswith("+ "):  # Added in comparison file
@@ -150,8 +150,8 @@ def generate_excel_report(mother_file, comparison_file, output_dir):
                             "Observation Category": "Mismatch of content between Filed Copy and customer copy",  # Status
                             "Page": comparison_title,  # Page Title
                             "Page Number": page_num,
-                            "Base File Content": "",
-                            "Comparison File Content": line[2:].strip(),
+                            f"Base File ({os.path.basename(mother_file)}) Content": "",
+                            f"Comparison File ({os.path.basename(comparison_file)}) Content": line[2:].strip(),
                         }
                     )
 
